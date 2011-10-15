@@ -2,7 +2,7 @@ module PeekAndPick
   extend self
 
   def self.add_filter(name, &block)
-    AutoHtml::Builder.add_filter(name, &block)
+    PeekAndPick::Builder.add_filter(name, &block)
   end
 
   def auto_html(raw, &proc)

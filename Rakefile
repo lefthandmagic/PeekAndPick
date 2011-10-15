@@ -1,13 +1,9 @@
-require 'bundler'
-Bundler::GemHelper.install_tasks
-
-
 require 'rake/testtask'
 
 desc 'Default: run tests'
 task :default => :test
 
-desc 'Test AutoHtml'
+desc 'Test Peek and Pick'
 Rake::TestTask.new(:test) do |t|
   t.pattern = 'test/**/*_test.rb'
 end
