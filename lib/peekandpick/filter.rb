@@ -5,7 +5,7 @@ module PeekAndPick
       @options = nil
     end
 
-    def with(options, &block)
+    def with(options, block)
       @options = options
       @block = block
     end

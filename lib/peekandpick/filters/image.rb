@@ -1,7 +1,10 @@
-require 'tag_helper'
-
-PeekAndPick.add_filter(:image).with({:alt => ''}) do |text, options|
+image_lambda = lambda { |text, options|
   text.gsub(/https?:\/\/.+\.(jpg|jpeg|bmp|gif|png)(\?\S+)?/i) do |match|
-    TagHelper.image_tag(match, options)
+    result = Hash.new
+    result['type'] = 'image'
+    result['value'] = match
+    return result
   end
-end
+}
+
+PeekAndPick.add_filter(:image).with({:alt => ''}, image_lambda)
