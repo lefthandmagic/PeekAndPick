@@ -1,17 +1,17 @@
 module PeekAndPickFor
 
   # default options that can be overridden on the global level
-  @@auto_html_for_options = {
+  @@peek_and_pick_for_options = {
     :htmlized_attribute_suffix => '_html'
   }
-  mattr_reader :auto_html_for_options
+  mattr_reader :peek_and_pick_for_options
 
   def self.included(base)
     base.extend(ClassMethods)
   end
 
   module ClassMethods
-    def auto_html_for(raw_attrs, &proc)
+    def peek_and_pick_for(raw_attrs, &proc)
       include PeekAndPickFor::InstanceMethods
       before_save :auto_html_prepare
 
@@ -22,7 +22,7 @@ module PeekAndPickFor
         end
       end
 
-      suffix =  PeekAndPickFor.auto_html_for_options[:htmlized_attribute_suffix]
+      suffix =  PeekAndPickFor.peek_and_pick_for_options[:htmlized_attribute_suffix]
 
       [raw_attrs].flatten.each do |raw_attr|
         define_method("#{raw_attr}#{suffix}=") do |val|

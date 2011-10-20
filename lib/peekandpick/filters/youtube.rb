@@ -9,17 +9,18 @@ youtube_lambda = lambda { |text, options|
     width = options[:width]
     height = options[:height]
     frameborder = options[:frameborder]
+    result = Hash.new
+    result['type'] = 'video'
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
     posts.each do |link|
-      a = link.attributes['title']
-      b = link.attributes['description']
+      if link.attributes['name'].to_s == 'description'
+        result['description'] = link.attributes['content'].to_s
+      end
     end
-
     
-    result = Hash.new
-    result['type'] = 'video'
+    
     result['value'] = %{<iframe class="youtube-player" type="text/html" width="#{width}" height="#{height}" src="http://www.youtube.com/embed/#{youtube_id}" frameborder="#{frameborder}"></iframe>}
     return result
   end
