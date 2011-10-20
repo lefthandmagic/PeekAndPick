@@ -19,8 +19,6 @@ youtube_lambda = lambda { |text, options|
         result['description'] = link.attributes['content'].to_s
       end
     end
-    
-    
     result['value'] = %{<iframe class="youtube-player" type="text/html" width="#{width}" height="#{height}" src="http://www.youtube.com/embed/#{youtube_id}" frameborder="#{frameborder}"></iframe>}
     return result
   end
