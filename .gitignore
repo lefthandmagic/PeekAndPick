@@ -2,3 +2,6 @@
 .bundle
 Gemfile.lock
 pkg/*
+test.sqlite3
+test.sqlite3
+test.sqlite3
