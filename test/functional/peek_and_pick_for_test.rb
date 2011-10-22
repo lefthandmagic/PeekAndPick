@@ -3,11 +3,11 @@ require File.expand_path('../../fixture_setup', __FILE__)
 
 class Article < ActiveRecord::Base
   peek_and_pick_for :body do
-    #html_escape
+    html_escape
     youtube(:width => 400, :height => 250)
     image
-    #link(:target => "_blank")
-    #simple_format
+    link(:target => "_blank")
+    simple_format
   end
 end
 
@@ -15,15 +15,13 @@ class PeekAndPickForTest < Test::Unit::TestCase
   include FixtureSetup
 
   def test_transform_on_initialization
-    @article = Article.new(:body => 'Do you like this logo http://rors.org/images/rails.png? Yeah?')
-    puts @article.body_html
+    @article = Article.new(:body => 'Yo!')
     assert_equal '<p>Yo!</p>', @article.body_html
   end
 
   def test_html_safe
     return unless "".respond_to?(:html_safe?)
-    @article = Article.new(:body => 'http://www.youtube.com/watch?v=BwNrmYRiX_o&feature=related')
-    puts @article.body_html
+    @article = Article.new(:body => 'Yo!')
     assert @article.body_html.html_safe?
   end
 
