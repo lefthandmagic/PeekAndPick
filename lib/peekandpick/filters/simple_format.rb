@@ -7,7 +7,9 @@ simple_format_lambda = lambda { |text, html_options|
   if (text.instance_of? Hash)
     text['value'] = ActionView::Base.new.simple_format(*args) 
   else
-    text = ActionView::Base.new.simple_format(*args) 
+    text = Hash.new
+    text['type'] = 'default'
+    text['value'] = ActionView::Base.new.simple_format(*args) 
   end
   return text
   rescue ArgumentError

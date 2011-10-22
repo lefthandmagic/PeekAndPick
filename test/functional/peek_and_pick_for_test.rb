@@ -16,19 +16,19 @@ class PeekAndPickForTest < Test::Unit::TestCase
 
   def test_transform_on_initialization
     @article = Article.new(:body => 'Yo!')
-    assert_equal '<p>Yo!</p>', @article.body_html
+    assert_equal '<p>Yo!</p>', @article.body_html['value']
   end
 
   def test_html_safe
     return unless "".respond_to?(:html_safe?)
     @article = Article.new(:body => 'Yo!')
-    assert @article.body_html.html_safe?
+    assert @article.body_html['value'].html_safe?
   end
 
   def test_transform_after_save
     @article = Article.new(:body => 'Yo!')
     @article.save!
-    assert_equal '<p>Yo!</p>', @article.body_html
+    assert_equal '<p>Yo!</p>', @article.body_html['value']
   end
 
   def test_transform_of_nil
