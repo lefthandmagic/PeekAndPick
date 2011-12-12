@@ -11,6 +11,7 @@ module PeekAndPick
     end
 
     def apply(text, options = {})
+      return text if text.instance_of? Hash
       text = (text.nil?)? text.to_s : text
       _options = @options && @options.merge(options)
       if _options

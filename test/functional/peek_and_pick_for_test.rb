@@ -41,6 +41,6 @@ class PeekAndPickForTest < Test::Unit::TestCase
     @article = Article.create!(:body => 'Yo!')
     @article.update_attributes(:body => 'http://vukajlija.com')
     @article.save!
-    assert_equal '<p><a href="http://vukajlija.com" target="_blank">http://vukajlija.com</a></p>', @article.body_html['value']
+    assert_equal '<a href="http://vukajlija.com" target="_blank">http://vukajlija.com</a>', @article.body_html['value']
   end
 end
