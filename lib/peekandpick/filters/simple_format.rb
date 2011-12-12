@@ -8,7 +8,7 @@ simple_format_lambda = lambda { |text, html_options|
     text['value'] = ActionView::Base.new.simple_format(*args) 
   else
     text = Hash.new
-    text['type'] = 'default'
+    text['type'] = :default
     text['value'] = ActionView::Base.new.simple_format(*args) 
   end
   return text

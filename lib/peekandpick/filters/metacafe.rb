@@ -8,7 +8,7 @@ metacafe_lambda = lambda { |text, options|
     autoplay        = options[:autoplay] ? "autoPlay=yes" : "autoPlay=no"
     flash_vars = [show_stats, autoplay].join("|")
     result = Hash.new
-    result['type'] = 'video'
+    result['type'] = :video
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

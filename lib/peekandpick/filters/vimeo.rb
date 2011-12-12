@@ -10,7 +10,7 @@ vimeo_lambda = lambda { |text, options|
     query_string_variables = [show_title, show_byline, show_portrait].compact.join("&")
     query_string    = "?" + query_string_variables unless query_string_variables.empty?
     result = Hash.new
-    result['type'] = 'video'
+    result['type'] = :video
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

@@ -6,7 +6,7 @@ dailymotion_lambda = lambda { |text, options|
   text.gsub(/http:\/\/www\.dailymotion\.com.*\/video\/(.+)_*/) do |match|
     video_id = $1
     result = Hash.new
-    result['type'] = 'video'
+    result['type'] = :video
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

@@ -10,7 +10,7 @@ youtube_lambda = lambda { |text, options|
     height = options[:height]
     frameborder = options[:frameborder]
     result = Hash.new
-    result['type'] = 'video'
+    result['type'] = :video
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

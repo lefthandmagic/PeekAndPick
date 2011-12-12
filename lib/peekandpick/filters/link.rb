@@ -14,7 +14,7 @@ link_lambda = lambda { |text, options|
     doc = Nokogiri::HTML(open(hrefs[0]))
     posts = doc.xpath("//meta")
     result = Hash.new
-    result['type'] = 'link'
+    result['type'] = :link
     result['value'] = rinkuResult
     posts.each do |link|
       if link.attributes['name'].to_s == 'description'
