@@ -9,6 +9,7 @@ metacafe_lambda = lambda { |text, options|
     flash_vars = [show_stats, autoplay].join("|")
     result = Hash.new
     result['type'] = :video
+    result['provider'] = :metacafe
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

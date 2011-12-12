@@ -3,6 +3,7 @@ google_video_lambda = lambda { |text, options|
     docid = $1
     result = Hash.new
     result['type'] = :video
+    result['provider'] = :google_video
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

@@ -7,6 +7,7 @@ dailymotion_lambda = lambda { |text, options|
     video_id = $1
     result = Hash.new
     result['type'] = :video
+    result['provider'] = :dailymotion
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
