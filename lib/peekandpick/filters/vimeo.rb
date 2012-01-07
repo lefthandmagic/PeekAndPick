@@ -12,6 +12,8 @@ vimeo_lambda = lambda { |text, options|
     result = Hash.new
     result['type'] = :video
     result['provider'] = :vimeo
+    result['video_url'] = match
+    result['vimeo_id'] = vimeo_id
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

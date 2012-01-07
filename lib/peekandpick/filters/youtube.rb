@@ -12,6 +12,8 @@ youtube_lambda = lambda { |text, options|
     result = Hash.new
     result['type'] = :video
     result['provider'] = :youtube
+    result['video_url'] = match
+    result['youtube_id'] = youtube_id
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")

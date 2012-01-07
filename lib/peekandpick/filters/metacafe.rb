@@ -10,6 +10,9 @@ metacafe_lambda = lambda { |text, options|
     result = Hash.new
     result['type'] = :video
     result['provider'] = :metacafe
+    result['video_url'] = match
+    result['metacafe_id'] = metacafe_id
+    result['metacafe_slug'] = metacafe_slug
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
