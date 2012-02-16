@@ -22,7 +22,6 @@ vimeo_lambda = lambda { |text, options|
         result['description'] = link.attributes['content'].to_s
       end
     end
-    result['value'] = %{<iframe src="http://player.vimeo.com/video/#{vimeo_id}#{query_string}" width="#{width}" height="#{height}" frameborder="#{frameborder}"></iframe>}
     return result
   end
 }

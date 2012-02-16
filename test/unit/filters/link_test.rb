@@ -36,7 +36,7 @@ class LinkTest < Test::Unit::TestCase
     url = 'http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0'
     # uses auto_link instead raw to support both Rails 2 & 3
     result = auto_html(url) { link }
-    assert_equal('<a href="http://www.google.com/#q=nikola+tesla&amp;ct=tesla09&amp;oi=ddle&amp;fp=Xmf0jJ9P_V0" >http://www.google.com/#q=nikola+tesla&amp;ct=tesla09&amp;oi=ddle&amp;fp=Xmf0jJ9P_V0</a>', result['value'])
+    assert_equal('<a href="http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0" >http://www.google.com/#q=nikola+tesla&ct=tesla09&oi=ddle&fp=Xmf0jJ9P_V0</a>', result['value'])
   end
 
   def test_transform_with_options

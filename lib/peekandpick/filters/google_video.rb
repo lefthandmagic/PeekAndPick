@@ -14,7 +14,6 @@ google_video_lambda = lambda { |text, options|
         result['description'] = link.attributes['content'].to_s
       end
     end
-    result['value'] = %{<object width="#{options[:width]}" height="#{options[:height]}"><param name="movie" value="http://video.google.com/googleplayer.swf?docid=#{docid}&hl=en&fs=true"></param><param name="wmode" value="transparent"></param><embed src="http://video.google.com/googleplayer.swf?docid=#{docid}" type="application/x-shockwave-flash" wmode="transparent" width="#{options[:width]}" height="#{options[:height]}"></embed></object>}
     return result
   end
 }
