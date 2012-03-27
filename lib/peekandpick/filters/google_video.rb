@@ -1,3 +1,5 @@
+require_relative '../filters_helper'
+
 google_video_lambda = lambda { |text, options|
   text.gsub(/http:\/\/video\.google\.com\/videoplay\?docid\=(-?[0-9]*)[&\w;=\+_\-]*/) do |match|
     docid = $1
@@ -9,11 +11,7 @@ google_video_lambda = lambda { |text, options|
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
-    posts.each do |link|
-      if link.attributes['name'].to_s == 'description'
-        result['description'] = link.attributes['content'].to_s
-      end
-    end
+    scrape_page(posts, result)
     return result
   end
 }

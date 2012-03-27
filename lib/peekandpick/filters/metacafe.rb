@@ -1,3 +1,5 @@
+require_relative '../filters_helper'
+
 metacafe_lambda = lambda { |text, options|
   text.gsub(/http:\/\/www\.metacafe\.com\/watch\/([A-Za-z0-9._%-]*)\/([A-Za-z0-9._%-]*)(\/)?/) do |match|
     metacafe_id = $1
@@ -16,11 +18,7 @@ metacafe_lambda = lambda { |text, options|
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
-    posts.each do |link|
-      if link.attributes['name'].to_s == 'description'
-        result['description'] = link.attributes['content'].to_s
-      end
-    end
+    scrape_page(posts, result)
     return result
   end
 }

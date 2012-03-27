@@ -1,10 +1,9 @@
 require 'rinku'
 require 'tag_helper'
-require 'nokogiri'
-require 'open-uri'
+require_relative '../filters_helper'
+
 
 link_lambda = lambda { |text, options|
-  
   
   rinkuResult = Rinku.auto_link(text, :all, TagHelper.attributes(options))
   htmldoc = Nokogiri::HTML(rinkuResult)
@@ -16,11 +15,7 @@ link_lambda = lambda { |text, options|
     result = Hash.new
     result['type'] = :link
     result['value'] = rinkuResult
-    posts.each do |link|
-      if link.attributes['name'].to_s == 'description'
-        result['description'] = link.attributes['content'].to_s
-      end
-    end
+    scrape_page(posts, result)
     return result
   else
     return rinkuResult

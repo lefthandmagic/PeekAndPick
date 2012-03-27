@@ -1,6 +1,4 @@
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
+require_relative '../filters_helper'
 
 dailymotion_lambda = lambda { |text, options|
   text.gsub(/http:\/\/www\.dailymotion\.com.*\/video\/(.+)_*/) do |match|
@@ -13,11 +11,7 @@ dailymotion_lambda = lambda { |text, options|
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
-    posts.each do |link|
-      if link.attributes['name'].to_s == 'description'
-        result['description'] = link.attributes['content'].to_s
-      end
-    end
+    scrape_page(posts, result)
     return result
   end
 }

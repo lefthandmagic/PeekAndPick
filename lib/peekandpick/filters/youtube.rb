@@ -1,6 +1,4 @@
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
+require_relative '../filters_helper'
 
 youtube_lambda = lambda { |text, options|
   regex = /http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)(\&\S+)?|http:\/\/(www.)?youtu\.be\/([A-Za-z0-9._%-]*)?/
@@ -17,11 +15,7 @@ youtube_lambda = lambda { |text, options|
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
-    posts.each do |link|
-      if link.attributes['name'].to_s == 'description'
-        result['description'] = link.attributes['content'].to_s
-      end
-    end
+    scrape_page(posts, result)
     return result
   end
 }

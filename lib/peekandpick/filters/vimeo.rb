@@ -1,3 +1,5 @@
+require_relative '../filters_helper'
+
 vimeo_lambda = lambda { |text, options|
   text.gsub(/http:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)((\?|#)\S+)?/) do |match|
     vimeo_id = $2
@@ -17,11 +19,7 @@ vimeo_lambda = lambda { |text, options|
     #scrape the meta data 
     doc = Nokogiri::HTML(open(match))
     posts = doc.xpath("//meta")
-    posts.each do |link|
-      if link.attributes['name'].to_s == 'description'
-        result['description'] = link.attributes['content'].to_s
-      end
-    end
+    scrape_page(posts, result)
     return result
   end
 }
