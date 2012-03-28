@@ -10,12 +10,10 @@ link_lambda = lambda { |text, options|
   links = htmldoc.css('a')
   if !links.blank? 
     hrefs = links.map {|link| link.attribute('href').to_s}.uniq.sort.delete_if {|href| href.empty?}
-    doc = Nokogiri::HTML(open(hrefs[0]))
-    posts = doc.xpath("//meta")
     result = Hash.new
     result['type'] = :link
     result['value'] = rinkuResult
-    scrape_page(posts, result)
+    scrape_page(hrefs[0], result)
     return result
   else
     return rinkuResult

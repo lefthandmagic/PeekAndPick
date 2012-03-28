@@ -9,9 +9,7 @@ dailymotion_lambda = lambda { |text, options|
     result['video_url'] = match
     result['dailymotion_id'] = video_id
     #scrape the meta data 
-    doc = Nokogiri::HTML(open(match))
-    posts = doc.xpath("//meta")
-    scrape_page(posts, result)
+    scrape_page(match, result)
     return result
   end
 }

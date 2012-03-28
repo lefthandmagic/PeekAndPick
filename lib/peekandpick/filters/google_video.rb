@@ -9,9 +9,7 @@ google_video_lambda = lambda { |text, options|
     result['video_url'] = match
     result['google_video_id'] = docid
     #scrape the meta data 
-    doc = Nokogiri::HTML(open(match))
-    posts = doc.xpath("//meta")
-    scrape_page(posts, result)
+    scrape_page(match, result)
     return result
   end
 }

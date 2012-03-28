@@ -16,9 +16,7 @@ metacafe_lambda = lambda { |text, options|
     result['metacafe_id'] = metacafe_id
     result['metacafe_slug'] = metacafe_slug
     #scrape the meta data 
-    doc = Nokogiri::HTML(open(match))
-    posts = doc.xpath("//meta")
-    scrape_page(posts, result)
+    scrape_page(match, result)
     return result
   end
 }
