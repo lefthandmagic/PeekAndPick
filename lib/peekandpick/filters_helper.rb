@@ -1,3 +1,5 @@
+require 'open-uri'
+
 def scrape_page(match, result)
   doc = Nokogiri::HTML(open(match))
   posts = doc.xpath("//meta")
