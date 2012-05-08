@@ -1,7 +1,7 @@
 require_relative '../filters_helper'
 
 youtube_lambda = lambda { |text, options|
-  regex = /http:\/\/(www.)?youtube\.com\/watch\?*v=([A-Za-z0-9._%-]*)(\&\S+)?|http:\/\/(www.)?youtu\.be\/([A-Za-z0-9._%-]*)?/
+  regex = /http:\/\/(www.)?youtube\.com\/watch\?(.)*v=([A-Za-z0-9._%-]*)(\&\S+)?|http:\/\/(www.)?youtu\.be\/([A-Za-z0-9._%-]*)?/
   text.gsub(regex) do |match|
     youtube_id = $2 || $5
     width = options[:width]
