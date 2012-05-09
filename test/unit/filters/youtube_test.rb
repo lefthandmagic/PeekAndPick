@@ -3,7 +3,7 @@ require File.expand_path('../../unit_test_helper', __FILE__)
 class YouTubeTest < Test::Unit::TestCase
 
   def test_transform
-    result = auto_html('http://www.youtube.com/watch?v=tjYPasLKZN0') { youtube }
+    result = auto_html('http://www.youtube.com/watch?NR=1&feature=endscreen&v=ndtno2tBGbo') { youtube }
     assert_equal :video, result["type"]
     assert_equal :youtube, result["provider"]
   end

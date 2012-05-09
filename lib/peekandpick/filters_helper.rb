@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'nokogiri'
 
 def scrape_page(match, result)
   doc = Nokogiri::HTML(open(match))
