@@ -14,7 +14,8 @@ def scrape_page(match, result)
       og[link.attributes['property'].to_s] = link.attributes['content'].to_s
     end
   end
-  result['title'] = doc.css('title') if result['title'].nil?
+  title = doc.css('title').first if result['title'].nil?
+  result['title'] = title.content if title 
   result['og'] = og
   return result
 end
