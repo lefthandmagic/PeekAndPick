@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{This gem is used to preview various URIs and provide formatted previews for images/videos/links}
   s.add_dependency('rinku', '~> 1.5.1')
   s.add_dependency('tag_helper', '~> 0.0.3')
+  s.add_dependency('fastimage', '~> 1.2.13')
   s.add_dependency('nokogiri')
   s.rubyforge_project = "peekandpick"
 
