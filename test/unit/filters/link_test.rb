@@ -5,6 +5,7 @@ class LinkTest < Test::Unit::TestCase
   def test_transform
     result = auto_html("http://vukajlija.com") { link }
     assert_equal '<a href="http://vukajlija.com" >http://vukajlija.com</a>', result['value']
+    assert result['images'].size > 0
   end
 
   def test_transform_with_the_slash_at_the_end

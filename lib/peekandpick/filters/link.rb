@@ -13,7 +13,7 @@ link_lambda = lambda { |text, options|
     result = Hash.new
     result['type'] = :link
     result['value'] = rinkuResult
-    scrape_page(hrefs[0], result)
+    scrape_page(hrefs[0], result, options)
     return result
   else
     return rinkuResult
