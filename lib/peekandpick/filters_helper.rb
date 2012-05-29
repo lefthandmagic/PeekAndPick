@@ -20,7 +20,7 @@ def scrape_page(match, result, options = {})
   result['og'] = og
   
   # if result type is link, get all images greater than certain size
-  if result['type'] = :link
+  if result['type'] == :link
     images = get_images_array(doc, match, options)
     result['images'] = images
   end
