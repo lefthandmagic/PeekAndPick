@@ -19,8 +19,9 @@ def scrape_page(match, result, options = {})
   result['title'] = title.content if title 
   result['og'] = og
   
-  # if result type is link, get all images greater than certain size
-  if result['type'] == :link
+  # if result type is link, and it doesn't have a og image
+  # then get all images greater than certain size
+  if result['type'] == :link && !og['og:image']
     images = get_images_array(doc, match, options)
     result['images'] = images
   end
