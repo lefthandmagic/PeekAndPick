@@ -39,10 +39,16 @@ def get_images_array(doc, match, options)
   # create images set eliminating duplicates
   img_tags.each do |img_tag|
     img_src = img_tag.attributes['src'].to_s
-    img_src = base_uri + img_src if img_src.starts_with? '/'
+    if !img_src.starts_with? 'http://'
+      if img_src.starts_with? '/'
+        img_src = base_uri + img_src 
+      else
+        img_src = base_uri + '/' + img_src 
+      end
+    end
     images_set.add(img_src)
   end
-  
+
   #filter each of these for sizes 
   result_set = Set.new
   minWidth = options[:width]
