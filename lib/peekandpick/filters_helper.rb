@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'fastimage'
 
 def scrape_page(match, result, options = {})
+  match = URI::encode(match)
   doc = Nokogiri::HTML(open(match))
   posts = doc.xpath("//meta")
   og = Hash.new
@@ -46,7 +47,8 @@ def get_images_array(doc, match, options)
         img_src = base_uri + '/' + img_src 
       end
     end
-    images_set.add(img_src)
+    
+    images_set.add(URI::encode(img_src))
   end
 
   #filter each of these for sizes 
