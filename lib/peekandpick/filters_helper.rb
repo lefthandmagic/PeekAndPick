@@ -53,9 +53,10 @@ def get_images_array(doc, match, options)
   result_set = Set.new
   minWidth = options[:width]
   minWidth ||= 120
+  minHeight ||= 100
   images_set.each do |img_src|
     size = FastImage.size(img_src)
-    if size && size[0] > minWidth
+    if size && size[0] > minWidth && size[1] > minHeight
       result_set.add(img_src)
     end
   end
