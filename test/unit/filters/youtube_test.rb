@@ -2,6 +2,12 @@ require File.expand_path('../../unit_test_helper', __FILE__)
 
 class YouTubeTest < Test::Unit::TestCase
 
+  def test_https
+    result = auto_html('https://www.youtube.com/watch?v=beOgcOu-vQU&feature=player_embedded#!') { youtube }
+    assert_equal :video, result["type"]
+    assert_equal :youtube, result["provider"]
+  end
+  
   def test_transform
     result = auto_html('http://www.youtube.com/watch?NR=1&feature=endscreen&v=ndtno2tBGbo') { youtube }
     assert_equal :video, result["type"]
